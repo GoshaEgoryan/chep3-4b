@@ -10,7 +10,7 @@
 
 class Link {
 public:
-    Link(int tx, int ty, int tw);
+    Link(int tx, int ty, int tw, Link* tprev = NULL, Link* tnext = NULL);
     Link(const Link* link);
     int getX() const;
     int getY() const;

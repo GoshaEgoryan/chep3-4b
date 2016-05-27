@@ -1,14 +1,16 @@
 /* 
  * File:   head.h
- * Author: Р“РѕС€Р° Р•РіРѕСЂСЏРЅ
+ * Author: Гоша Егорян
  *
- * Created on 27 РјР°СЏ 2016 Рі., 2:30
+ * Created on 27 мая 2016 г., 2:30
  */
 
 #ifndef HEAD_H
 #define	HEAD_H
 
+#include <stdio.h>
 #include <iostream>
+#include <stdlib.h>
 #include "link.h"
 
 using namespace std;

@@ -7,12 +7,12 @@
 
 #include "head.h"
 
-Link::Link(const int tx, const int ty, const int tw) {
+Link::Link(const int tx, const int ty, const int tw, Link* tprev, Link* tnext) {
     x = tx;
     y = ty;
     w = tw;
-    prev = NULL;
-    next = NULL;
+    prev = tprev;
+    next = tnext;
 }
 
 Link::Link(const Link* link) {
