@@ -36,12 +36,12 @@ int main() {
     cout << endl << "---------------------------" << endl << endl << "Прима:" << endl;
     t = prim(list, p);
     cout << t->getSumWeight() << endl;
-    while (t != NULL) {
-        cout << t->getN() << " ";
-        t = t->getNext();
-    }
-    
-    cout << endl << endl;
+//    while (t != NULL) {
+//        cout << t->getN() << " ";
+//        t = t->getNext();
+//    }
+//    
+//    cout << endl << endl;
 
     cout << endl << "---------------------------" << endl << endl << "Крускала:" << endl;
     t = kruskal(list);
