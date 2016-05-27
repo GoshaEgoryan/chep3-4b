@@ -8,8 +8,8 @@
 #include "head.h"
 
 Link* prim(Link *input, int p) {
-    bool first = true;
-    int minW, num;
+    bool first = true, cn = false;
+    int minW, num = 0, lnum = 0;
     vector<int> points;
     Link
             *start = input->copyList()->getFirst(),
@@ -33,7 +33,7 @@ Link* prim(Link *input, int p) {
                     )
                     &&
                     (
-                        minW > start_t->getW()
+                        minW >= start_t->getW()
                     )
                 ) {
                 minW = start_t->getW();
@@ -41,6 +41,20 @@ Link* prim(Link *input, int p) {
             }
             start_t = start_t->getNext();
         }
+        if (lnum == num) {
+            for(int i = 1; i <= p; i++) {
+                if(!count(points.begin(), points.end(), i)) {
+                    points.push_back(i);
+                    cn = true;
+                    break;
+                }
+            }
+        }
+        if (cn) {
+            cn = false;
+            continue;
+        }
+        lnum = num;
         if (first) {
             end = new Link(start->findForNum(num));
             end_t = end;
