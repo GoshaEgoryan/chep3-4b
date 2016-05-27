@@ -5,15 +5,11 @@
  * Created on 27 мая 2016 г., 2:23
  */
 
-#include <cstdlib>
+#include "head.h"
 
-using namespace std;
-
-/*
- * 
- */
-int main(int argc, char** argv) {
-
+int main() {
+    setlocale(LC_ALL, "Russian");
+    
+    cout << "Привет!";
     return 0;
 }
-
