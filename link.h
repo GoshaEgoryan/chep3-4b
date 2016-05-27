@@ -34,6 +34,10 @@ public:
     Link* sortBubble();
     Link* copyList();
     long int getSumWeight();
+    bool hasNum(int n);
+    bool addNewLink(Link* link);
+    int maxW();
+    Link* findForNum(int i);
 private:
     int x, y, w, n;
     Link *prev, *next;

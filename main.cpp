@@ -9,16 +9,16 @@
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    
+
     bool first = true;
     int p, l, x, y, w;
     Link *list, *t;
-    
+
     cin >> p >> l;
-    
+
     for (int i = 0; i < l; i++) {
         cin >> x >> y >> w;
-        if ( (x>p)||(y>p) ) {
+        if ((x > p) || (y > p)) {
             cout << "Неверные данные. Пожалуйста, проверьте их и повторите ввод." << endl;
             i--;
             continue;
@@ -33,18 +33,20 @@ int main() {
         }
     }
     
-    list = kruskal(list);
-    
-    cout << endl << "---------------------------" << endl << endl;
-    
-    t = list;
+    cout << endl << "---------------------------" << endl << endl << "Прима:" << endl;
+    t = prim(list, p);
+    cout << t->getSumWeight() << endl;
+
+    cout << endl << "---------------------------" << endl << endl << "Крускала:" << endl;
+    t = kruskal(list);
     cout << t->getSumWeight() << endl;
     while (t != NULL) {
         cout << t->getN() << " ";
-        t=t->getNext();
+        t = t->getNext();
     }
-    cout << endl;
     
+    cout << endl << endl;
+
     system("pause");
     return 0;
 }

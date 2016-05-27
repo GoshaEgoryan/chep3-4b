@@ -168,3 +168,47 @@ long int Link::getSumWeight() {
     }
     return result;
 }
+
+bool Link::hasNum(const int t) {
+    Link *act = this->getFirst();
+    while (act != NULL) {
+        if (act->getN() == t) {
+            return true;
+        }
+        act = act->getNext();
+    }
+    return false;
+}
+
+bool Link::addNewLink(Link* link) {
+    if (next != NULL) {
+        return false;
+    }
+    next = new Link(link);
+    next->setPrev(this);
+    next->setNext(NULL);
+    return true;
+}
+
+int Link::maxW() {
+    int i = 0;
+    Link* t = this->getFirst();
+    while (t != NULL) {
+        if (i < t->getW()) {
+            i = t->getW();
+        }
+        t = t->getNext();
+    }
+    return i;
+}
+
+Link* Link::findForNum(int i) {
+    Link *t = this->getFirst();
+    while (t != NULL) {
+        if (t->getN() == i) {
+            return t;
+        }
+        t = t->getNext();
+    }
+    return this;
+}

@@ -21,15 +21,15 @@ Link* kruskal(Link* list) {
         e = false;
         act = start;
         while (act != NULL) {
-            if ((t->getX() == act->getX())||(t->getX() == act->getY())) {
+            if ((t->getX() == act->getX()) || (t->getX() == act->getY())) {
                 q = true;
             }
-            if ((t->getY() == act->getX())||(t->getY() == act->getY())) {
+            if ((t->getY() == act->getX()) || (t->getY() == act->getY())) {
                 e = true;
             }
             act = act->getNext();
         }
-        if (q&&e) {
+        if (q && e) {
             continue;
         } else {
             result->setNext(new Link(t));
@@ -38,6 +38,12 @@ Link* kruskal(Link* list) {
             result->setNext(NULL);
         }
     }
+    delete t->getFirst();
+    while (t->getNext() != NULL) {
+        t = t->getNext();
+        delete t->getPrev();
+    }
+    delete t;
     result->setNext(NULL);
     return start;
 }
