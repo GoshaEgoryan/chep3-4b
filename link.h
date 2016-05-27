@@ -29,7 +29,7 @@ public:
     void setNext(Link* t);
     void print() const;
     void turnRight();
-    Link* bubbleSort();
+    Link* sortBubble();
     Link* copyList();
 private:
     int x, y, w;

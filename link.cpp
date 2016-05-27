@@ -105,28 +105,34 @@ void Link::turnRight() {
     if (next == NULL) {
         return;
     }
-    Link *t = next;
-    t->setPrev(prev);
-    next = t->getNext();
-    t->setNext(this);
-    prev = t;
+    Link
+            *a = prev,
+            *b = this,
+            *c = next,
+            *d = next->getNext();
+    if (a != NULL) {
+        a->setNext(c);
+    }
+    if (d != NULL) {
+        d->setPrev(b);
+    }
+    b->setPrev(c);
+    b->setNext(d);
+    c->setPrev(a);
+    c->setNext(b);
 }
 
-Link* Link::bubbleSort() {
+Link* Link::sortBubble() {
     Link *list = this->getFirst(), *act;
-    bool swapped;
     int length = list->getLength();
     for (int i = 0; i < length - 1; i++) {
-        swapped = false;
         act = list;
         for (int j = 0; j < length - i - 1; j++, act = act->getNext()) {
             if (act->getW() > act->getNext()->getW()) {
                 act->turnRight();
-                swapped = true;
+                act = act->getPrev();
             }
         }
-        if (!swapped)
-            break;
     }
     return list->getFirst();
 }

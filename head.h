@@ -15,4 +15,6 @@
 
 using namespace std;
 
+Link* kruskal (Link *list);
+
 #endif	/* HEAD_H */

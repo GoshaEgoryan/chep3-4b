@@ -37,15 +37,14 @@ int main() {
         }
     }
     
-    list = list->bubbleSort()->copyList();
+    list = kruskal(list);
     
     t = list;
-    cout << "Количество вершин: " << p << ", рёбер: " << l << endl;
-    for (int i = 0; i < l; i++) {
+    cout << "Количество вершин в минимальном остовном дереве: " << p << ", рёбер: " << t->getLength() << endl << "Рёбра:" << endl;
+    while (t != NULL) {
         t->print();
         t=t->getNext();
     }
-    cout << "Длина: " << list->getLength() << endl;
     
     system("pause");
     return 0;
