@@ -30,6 +30,7 @@ public:
     void print() const;
     void turnRight();
     Link* bubbleSort();
+    Link* copyList();
 private:
     int x, y, w;
     Link *prev, *next;

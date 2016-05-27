@@ -130,3 +130,15 @@ Link* Link::bubbleSort() {
     }
     return list->getFirst();
 }
+
+Link* Link::copyList() {
+    Link* act = this->getFirst();
+    Link* result = new Link(act);
+    while (act->getNext() != NULL) {
+        result->setNext(new Link(act->getNext()));
+        result->getNext()->setPrev(result);
+        result = result->getNext();
+        act = act->getNext();
+    }
+    return result->getFirst();
+}

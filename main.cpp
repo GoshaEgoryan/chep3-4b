@@ -37,7 +37,7 @@ int main() {
         }
     }
     
-    list = list->bubbleSort();
+    list = list->bubbleSort()->copyList();
     
     t = list;
     cout << "Количество вершин: " << p << ", рёбер: " << l << endl;
