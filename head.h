@@ -16,4 +16,3 @@
 using namespace std;
 
 #endif	/* HEAD_H */
-

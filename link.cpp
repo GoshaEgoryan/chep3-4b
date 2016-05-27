@@ -1,8 +1,8 @@
 /* 
  * File:   link.cpp
- * Author: Ð“Ð¾ÑˆÐ° Ð•Ð³Ð¾Ñ€ÑÐ½
+ * Author: Ãîøà Åãîðÿí
  *
- * Created on 27 Ð¼Ð°Ñ 2016 Ð³., 3:22
+ * Created on 27 ìàÿ 2016 ã., 3:22
  */
 
 #include "head.h"
@@ -35,6 +35,20 @@ int Link::getW() const {
     return w;
 }
 
+int Link::getLength() {
+    return getLinksToEnd() + 1;
+}
+
+int Link::getLinksToEnd() {
+    int result = 0;
+    Link *t = this;
+    while (t->getNext() != NULL) {
+        t = t->getNext();
+        result++;
+    }
+    return result;
+}
+
 Link* Link::getPrev() const {
     return prev;
 }
@@ -45,6 +59,22 @@ Link* Link::getNext() const {
 
 Link* Link::getClone() const {
     return new Link(this);
+}
+
+Link* Link::getLast() {
+    Link *t = this;
+    while (t->getNext() != NULL) {
+        t = t->getNext();
+    }
+    return t;
+}
+
+Link* Link::getFirst() {
+    Link *t = this;
+    while (t->getPrev() != NULL) {
+        t = t->getPrev();
+    }
+    return t;
 }
 
 void Link::setX(const int t) {
@@ -69,4 +99,34 @@ void Link::setNext(Link* t) {
 
 void Link::print() const {
     cout << x << " " << y << " " << w << endl;
+}
+
+void Link::turnRight() {
+    if (next == NULL) {
+        return;
+    }
+    Link *t = next;
+    t->setPrev(prev);
+    next = t->getNext();
+    t->setNext(this);
+    prev = t;
+}
+
+Link* Link::bubbleSort() {
+    Link *list = this->getFirst(), *act;
+    bool swapped;
+    int length = list->getLength();
+    for (int i = 0; i < length - 1; i++) {
+        swapped = false;
+        act = list;
+        for (int j = 0; j < length - i - 1; j++, act = act->getNext()) {
+            if (act->getW() > act->getNext()->getW()) {
+                act->turnRight();
+                swapped = true;
+            }
+        }
+        if (!swapped)
+            break;
+    }
+    return list->getFirst();
 }

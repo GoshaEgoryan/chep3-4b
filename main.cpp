@@ -14,7 +14,7 @@ int main() {
     int p, l, x, y, w;
     Link *list, *t;
     
-    cout << "Введите количество вершин и ребер:" << endl;
+    cout << "Введите количество вершин и рёбер:" << endl;
     cin >> p >> l;
     
     for (int i = 0; i < l; i++) {
@@ -37,12 +37,15 @@ int main() {
         }
     }
     
+    list = list->bubbleSort();
+    
     t = list;
-    cout << "Количество вершин: " << p << ", ребер: " << l << endl;
+    cout << "Количество вершин: " << p << ", рёбер: " << l << endl;
     for (int i = 0; i < l; i++) {
         t->print();
         t=t->getNext();
     }
+    cout << "Длина: " << list->getLength() << endl;
     
     system("pause");
     return 0;
