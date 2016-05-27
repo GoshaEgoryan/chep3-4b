@@ -14,37 +14,36 @@ int main() {
     int p, l, x, y, w;
     Link *list, *t;
     
-    cout << "Введите количество вершин и рёбер:" << endl;
     cin >> p >> l;
     
     for (int i = 0; i < l; i++) {
-        cout << "Введите исходную и конечную вершины:" << endl;
-        cin >> x >> y;
+        cin >> x >> y >> w;
         if ( (x>p)||(y>p) ) {
             cout << "Неверные данные. Пожалуйста, проверьте их и повторите ввод." << endl;
             i--;
             continue;
         }
-        cout << "Введите вес ребра:" << endl;
-        cin >> w;
         if (first) {
-            t = new Link(x, y, w);
+            t = new Link(x, y, w, i + 1);
             list = t;
             first = false;
         } else {
-            t = new Link(x, y, w, t);
+            t = new Link(x, y, w, i + 1, t);
             t->getPrev()->setNext(t);
         }
     }
     
     list = kruskal(list);
     
+    cout << endl << "---------------------------" << endl << endl;
+    
     t = list;
-    cout << "Количество вершин в минимальном остовном дереве: " << p << ", рёбер: " << t->getLength() << endl << "Рёбра:" << endl;
+    cout << t->getSumWeight() << endl;
     while (t != NULL) {
-        t->print();
+        cout << t->getN() << " ";
         t=t->getNext();
     }
+    cout << endl;
     
     system("pause");
     return 0;

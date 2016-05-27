@@ -7,10 +7,11 @@
 
 #include "head.h"
 
-Link::Link(const int tx, const int ty, const int tw, Link* tprev, Link* tnext) {
+Link::Link(const int tx, const int ty, const int tw, const int tn, Link* tprev, Link* tnext) {
     x = tx;
     y = ty;
     w = tw;
+    n = tn;
     prev = tprev;
     next = tnext;
 }
@@ -19,6 +20,7 @@ Link::Link(const Link* link) {
     x = link->getX();
     y = link->getY();
     w = link->getW();
+    n = link->getN();
     prev = link->getPrev();
     next = link->getNext();
 }
@@ -33,6 +35,10 @@ int Link::getY() const {
 
 int Link::getW() const {
     return w;
+}
+
+int Link::getN() const {
+    return n;
 }
 
 int Link::getLength() {
@@ -87,6 +93,10 @@ void Link::setY(const int t) {
 
 void Link::setW(const int t) {
     w = t;
+}
+
+void Link::setN(const int t) {
+    n = t;
 }
 
 void Link::setPrev(Link* t) {
@@ -147,4 +157,14 @@ Link* Link::copyList() {
         act = act->getNext();
     }
     return result->getFirst();
+}
+
+long int Link::getSumWeight() {
+    long int result = 0;
+    Link *t = this->getFirst();
+    while (t != NULL) {
+        result += t->getW();
+        t = t->getNext();
+    }
+    return result;
 }
