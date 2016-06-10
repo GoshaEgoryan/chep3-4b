@@ -9,17 +9,22 @@
 
 int main() {
     setlocale(LC_ALL, "Russian");
+    ifstream fin;
+    ofstream fout;
+    
+    fin.open("test.txt");
+    fout.open("results.txt");
 
     bool first = true;
     int p, l, x, y, w;
     Link *list, *t;
 
-    cin >> p >> l;
+    fin >> p >> l;
 
     for (int i = 0; i < l; i++) {
-        cin >> x >> y >> w;
+        fin >> x >> y >> w;
         if ((x > p) || (y > p)) {
-            cout << "Неверные данные. Пожалуйста, проверьте их и повторите ввод." << endl;
+            fout << "Неверные данные. Пожалуйста, проверьте их и повторите ввод. (" << x << " " << y << " " << w << ")" << endl;
             i--;
             continue;
         }
@@ -33,9 +38,9 @@ int main() {
         }
     }
     
-    cout << endl << "---------------------------" << endl << endl << "Прима:" << endl;
+    fout << endl << "---------------------------" << endl << endl << "Прима:" << endl;
     t = prim(list, p);
-    cout << t->getSumWeight() << endl;
+    fout << t->getSumWeight() << endl;
 //    while (t != NULL) {
 //        cout << t->getN() << " ";
 //        t = t->getNext();
@@ -43,15 +48,15 @@ int main() {
 //    
 //    cout << endl << endl;
 
-    cout << endl << "---------------------------" << endl << endl << "Крускала:" << endl;
+    fout << endl << "---------------------------" << endl << endl << "Крускала:" << endl;
     t = kruskal(list);
-    cout << t->getSumWeight() << endl;
+    fout << t->getSumWeight() << endl;
     while (t != NULL) {
-        cout << t->getN() << " ";
+        fout << t->getN() << " ";
         t = t->getNext();
     }
     
-    cout << endl << endl;
+    fout << endl << endl;
 
     system("pause");
     return 0;

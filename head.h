@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 #include "link.h"
 
 using namespace std;
